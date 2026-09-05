@@ -79,4 +79,4 @@ More information about the structure of the analysis is available in [methodolog
 
 The complete Power BI report is available here:
 
-[Download the Power BI report](https://raw.githubusercontent.com/osaci-cosmin/romania-education-employment-powerbi/main/dashboard/Romania_Education_Employment_Analysis.pbix)
+[Download the Power BI report](https://github.com/osaci-cosmin/romania-education-employment-powerbi/releases/download/v1.0/Romania_Education_Employment_Analysis.pbix)
