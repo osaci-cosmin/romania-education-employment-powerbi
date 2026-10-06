@@ -7385,11 +7385,15 @@ PUBLIC SOURCE-CODE CURATION               ✅ COMPLETE
 
 PRIVACY / .GITIGNORE REVIEW               ✅ COMPLETE
 
-FINAL DOCUMENTATION                       🔄 IN PROGRESS
+DASHBOARD SCREENSHOTS                     ✅ COMPLETE
 
-GITHUB CLEANUP                            🔄 IN PROGRESS
+FINAL DOCUMENTATION                       ✅ COMPLETE
 
-GITHUB PUBLICATION                        ⏳ NEXT
+GITHUB CLEANUP                            ✅ COMPLETE
+
+GITHUB PUBLICATION                        ✅ COMPLETE
+
+FINAL SOURCE / LICENSING REVIEW           🔄 IN PROGRESS
 ```
 
 ---
@@ -7498,11 +7502,11 @@ County × Year aggregation
 
 The candidate-level intermediate layer is therefore intended to remain local to the data-processing workflow.
 
-It must not be published as part of the public GitHub dataset layer.
+It is not published as part of the public GitHub dataset layer.
 
 Only aggregated Baccalaureate information is used by the final Power BI model.
 
-The three final processed analytical datasets are:
+The three final processed analytical datasets published in the repository are:
 
 ```text
 data/processed/employment_clean.csv
@@ -7530,27 +7534,44 @@ powerbi/romania_education_employment.pbix
 
 The report contains the final semantic model, DAX measures, interaction logic, and six analytical pages.
 
-### Publication safeguards
+### Dashboard documentation assets
 
-Before final GitHub publication, the repository is reviewed for:
+Six final report screenshots are stored in:
 
 ```text
-candidate-level information
-raw source files
-intermediate data
-credentials
-API keys
-access tokens
-absolute local file paths
-temporary files
-development artifacts
-source attribution
-dataset licensing
+docs/images/
 ```
+
+Files:
+
+```text
+executive_overview.png
+employment_analysis.png
+enrollment_analysis.png
+baccalaureate_analysis.png
+county_comparison.png
+key_findings.png
+```
+
+### Publication safeguards
+
+Before staging the rebuilt repository, `.gitignore` was explicitly tested for:
+
+```text
+data/raw/
+data/interim/
+data/processed/enrollment_2015_2016_clean.csv
+```
+
+The staged file list was then inspected before commit and push.
+
+No raw dataset, candidate-level intermediate dataset, or single-year Enrollment prototype was included in the published commit.
 
 The reviewed public Python scripts contain no embedded passwords, API keys, access tokens, private credentials, or absolute user-specific file paths.
 
-Source attribution and dataset licensing are reviewed separately before final publication of the processed datasets.
+The public repository was then committed and pushed to the existing `main` branch while the legacy project version remained preserved separately.
+
+Source attribution and dataset licensing remain subject to a final documentation review because individual source resources may use different licensing metadata.
 
 ---
 
@@ -7656,11 +7677,11 @@ agregarea Județ × An
 
 Stratul intermediar la nivel de candidat este destinat să rămână local în cadrul fluxului de procesare.
 
-Acesta nu trebuie publicat ca parte a stratului public de date din repository-ul GitHub.
+Acesta nu este publicat ca parte a stratului public de date din repository-ul GitHub.
 
 Modelul final Power BI utilizează numai informații agregate de Bacalaureat.
 
-Cele trei dataseturi procesate finale sunt:
+Cele trei dataseturi procesate finale publicate în repository sunt:
 
 ```text
 data/processed/employment_clean.csv
@@ -7688,27 +7709,44 @@ powerbi/romania_education_employment.pbix
 
 Raportul conține modelul semantic final, măsurile DAX, logica interacțiunilor și cele șase pagini analitice.
 
-### Măsuri de siguranță pentru publicare
+### Materiale vizuale pentru documentație
 
-Înainte de publicarea finală pe GitHub, repository-ul este verificat pentru:
+Cele șase screenshots finale sunt stocate în:
 
 ```text
-informații la nivel de candidat
-fișiere raw
-date intermediare
-credentiale
-chei API
-access tokens
-path-uri locale absolute
-fișiere temporare
-artefacte de dezvoltare
-atribuirea surselor
-licențierea dataseturilor
+docs/images/
 ```
+
+Fișiere:
+
+```text
+executive_overview.png
+employment_analysis.png
+enrollment_analysis.png
+baccalaureate_analysis.png
+county_comparison.png
+key_findings.png
+```
+
+### Măsuri de siguranță pentru publicare
+
+Înainte de staging-ul repository-ului reconstruit, `.gitignore` a fost verificat explicit pentru:
+
+```text
+data/raw/
+data/interim/
+data/processed/enrollment_2015_2016_clean.csv
+```
+
+Lista fișierelor staged a fost apoi inspectată înainte de commit și push.
+
+Niciun dataset raw, dataset intermediar la nivel de candidat sau prototip Enrollment pentru un singur an nu a fost inclus în commit-ul publicat.
 
 Scripturile Python selectate pentru publicare nu conțin parole, chei API, access tokens, credentiale private sau path-uri locale absolute specifice utilizatorului.
 
-Atribuirea surselor și licențierea dataseturilor sunt verificate separat înainte de publicarea finală a datelor procesate.
+Repository-ul public a fost apoi publicat pe branch-ul existent `main`, iar versiunea veche a proiectului a rămas păstrată separat.
+
+Atribuirea surselor și licențierea dataseturilor rămân supuse unei verificări finale de documentație deoarece resursele sursă individuale pot utiliza metadata de licențiere diferite.
 
 ---
 
@@ -7825,11 +7863,61 @@ Key Findings
 
 ---
 
+# Final Public Repository Structure
+
+```text
+romania-education-employment-powerbi/
+│
+├── data/
+│   └── processed/
+│       ├── employment_clean.csv
+│       ├── enrollment_clean.csv
+│       └── baccalaureate_clean.csv
+│
+├── docs/
+│   ├── development_log.md
+│   └── images/
+│       ├── executive_overview.png
+│       ├── employment_analysis.png
+│       ├── enrollment_analysis.png
+│       ├── baccalaureate_analysis.png
+│       ├── county_comparison.png
+│       └── key_findings.png
+│
+├── powerbi/
+│   └── romania_education_employment.pbix
+│
+├── src/
+│   ├── 02_test_eurostat_api.py
+│   ├── 03_ingest_employment.py
+│   ├── 04_transform_employment.py
+│   ├── 12_ingest_all_enrollment.py
+│   ├── 18_transform_all_enrollment.py
+│   ├── 21_inventory_baccalaureate_sources.py
+│   ├── 26_ingest_all_baccalaureate.py
+│   ├── 30_fast_count_baccalaureate_2016_ods.py
+│   ├── 32_validate_siiir_county_mapping.py
+│   ├── 34_diagnose_baccalaureate_2022_final_results.py
+│   ├── 37_ingest_baccalaureate_2017_ods.py
+│   ├── 39_validate_baccalaureate_core_all_years.py
+│   ├── 41_profile_baccalaureate_results_all_years.py
+│   ├── 42_transform_baccalaureate_candidate_level.py
+│   ├── 43_aggregate_baccalaureate.py
+│   └── 48_validate_processed_datasets.py
+│
+├── .gitignore
+└── README.md
+```
+
+The local development workspace additionally retains `data/raw/`, `data/interim/`, and other historical development artifacts, but these are not part of the published repository structure.
+
+---
+
 # Current Project Status
 
 ## English
 
-The complete analytical workflow from public-source ingestion to interactive business intelligence reporting is operational.
+The complete analytical workflow from public-source ingestion to interactive business intelligence reporting is operational and the rebuilt portfolio project has been published to GitHub.
 
 The project currently demonstrates:
 
@@ -7861,6 +7949,7 @@ cross-domain analysis
 analytical interpretation
 data-quality validation
 privacy-aware repository curation
+Git / GitHub publication workflow
 ```
 
 Three production analytical pipelines are complete:
@@ -7910,25 +7999,32 @@ The final report contains six pages:
 6. Key Findings
 ```
 
-Public source-code curation and the privacy / `.gitignore` review are complete.
-
-The remaining project tasks are:
+The following publication stages are complete:
 
 ```text
-final README
-final repository cleanup
-dashboard screenshots / documentation assets
-final source attribution and licensing review
+public source-code curation
+privacy / .gitignore review
+dashboard screenshots
+final README and development documentation
+repository cleanup
 GitHub publication
 ```
 
-The project is therefore in the final portfolio-publication stage.
+The rebuilt version was published to the existing repository URL and `main` branch while the previous project version remained preserved separately.
+
+The only remaining documentation-maintenance task is:
+
+```text
+final source-attribution and licensing review
+```
+
+This final review does not change the analytical results or Power BI model; it concerns the precision of reuse / attribution documentation for the individual official source resources.
 
 ---
 
 ## Română
 
-Fluxul analitic complet, de la ingestia surselor publice până la raportarea interactivă Business Intelligence, este funcțional.
+Fluxul analitic complet, de la ingestia surselor publice până la raportarea interactivă Business Intelligence, este funcțional, iar versiunea reconstruită a proiectului de portofoliu a fost publicată pe GitHub.
 
 Proiectul demonstrează în prezent utilizarea:
 
@@ -7960,6 +8056,7 @@ analiză cross-domain
 interpretare analitică
 validarea calității datelor
 curatarea repository-ului cu atenție la protecția datelor
+workflow Git / GitHub pentru publicare
 ```
 
 Cele trei pipeline-uri analitice de producție sunt finalizate:
@@ -8009,16 +8106,62 @@ Raportul final conține șase pagini:
 6. Key Findings
 ```
 
-Selecția publică a codului sursă și verificarea privacy / `.gitignore` sunt finalizate.
-
-Etapele rămase sunt:
+Următoarele etape de publicare sunt finalizate:
 
 ```text
-README final
-curățarea finală a repository-ului
-screenshots ale dashboardului / materiale de documentație
-verificarea finală a atribuirii surselor și licențelor
+selecția publică a codului sursă
+verificarea privacy / .gitignore
+screenshots ale dashboardului
+README și documentația finală de dezvoltare
+curățarea repository-ului
 publicarea pe GitHub
 ```
 
-Proiectul se află astfel în etapa finală de publicare în portofoliu.
+Versiunea reconstruită a fost publicată la URL-ul existent al repository-ului și pe branch-ul `main`, iar versiunea anterioară a proiectului a rămas păstrată separat.
+
+Singura activitate rămasă la nivel de întreținere a documentației este:
+
+```text
+verificarea finală a atribuirii surselor și a licențelor
+```
+
+Această verificare finală nu modifică rezultatele analitice sau modelul Power BI; ea privește precizia documentării condițiilor de reutilizare și atribuire pentru resursele oficiale individuale.
+
+---
+
+# Final Publication Status
+
+```text
+DATA PIPELINES
+Employment                         ✅ COMPLETE
+Enrollment                         ✅ COMPLETE
+Baccalaureate                      ✅ COMPLETE
+Higher Education                   ⏸ DEFERRED
+
+DATA QUALITY
+Final processed-data audit         ✅ PASS
+Errors                             0
+Warnings                           0
+
+POWER BI
+Semantic model                     ✅ COMPLETE
+DAX measures                       ✅ COMPLETE
+Dashboard                          ✅ COMPLETE
+Dashboard QA                       ✅ PASS
+Screenshots                        ✅ COMPLETE
+
+PUBLIC REPOSITORY
+Public code curation               ✅ COMPLETE
+Privacy / .gitignore review        ✅ COMPLETE
+Repository cleanup                 ✅ COMPLETE
+README                             ✅ COMPLETE
+Development log                    ✅ COMPLETE
+Git commit                         ✅ COMPLETE
+GitHub push to main                ✅ COMPLETE
+Legacy version preservation        ✅ COMPLETE
+
+DOCUMENTATION MAINTENANCE
+Final licensing review             🔄 IN PROGRESS
+```
+
+The analytical and portfolio build is complete and publicly available. Future work is optional enhancement or documentation maintenance rather than completion of the core project.

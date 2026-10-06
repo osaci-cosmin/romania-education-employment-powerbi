@@ -31,7 +31,7 @@ The main common analytical period is:
 2015–2023
 ```
 
-Employment additionally includes 2014 in order to provide a longer baseline.
+Employment additionally includes 2014 to provide a longer baseline.
 
 ---
 
@@ -64,6 +64,8 @@ privacy-aware repository curation
 ```
 
 The repository URL was intentionally preserved so that existing portfolio and CV links continue to point to the current version of the project.
+
+The previous dashboard version is preserved separately in the repository history / legacy branch, while `main` contains the rebuilt project.
 
 ---
 
@@ -214,7 +216,7 @@ Final shape:
 Source:
 
 ```text
-Official annual Romanian Baccalaureate datasets
+Official annual Romanian Baccalaureate open datasets
 Session I
 ```
 
@@ -425,8 +427,6 @@ This ensures that selections covering multiple counties or years are weighted us
 # Power BI Report
 
 The final report contains six analytical pages.
-
----
 
 ## 1. Executive Overview
 
@@ -739,7 +739,6 @@ romania-education-employment-powerbi/
 │
 ├── docs/
 │   ├── development_log.md
-│   │
 │   └── images/
 │       ├── executive_overview.png
 │       ├── employment_analysis.png
@@ -808,6 +807,14 @@ It is intentionally excluded from the public repository.
 Only aggregated Baccalaureate information is used in the final public analytical layer and Power BI model.
 
 The public source-code selection was also reviewed to exclude unnecessary diagnostic scripts capable of displaying individual candidate identifiers.
+
+The publication workflow was explicitly checked so that the following were not staged or published:
+
+```text
+data/raw/
+data/interim/
+data/processed/enrollment_2015_2016_clean.csv
+```
 
 ---
 
@@ -930,8 +937,6 @@ They do not demonstrate causality.
 
 # Limitations
 
-The project has several methodological limitations.
-
 ```text
 Enrollment uses school years while Employment and Baccalaureate use calendar years.
 
@@ -994,6 +999,7 @@ DAX development
 dashboard development
 repository curation
 privacy decisions
+GitHub publication
 ```
 
 ---
@@ -1010,11 +1016,13 @@ data.gov.ro
 official Romanian education datasets
 ```
 
-Source attribution and applicable licensing conditions should be respected when reusing or redistributing source data.
-
 The repository intentionally excludes raw source files and candidate-level intermediate Baccalaureate data.
 
-Final attribution and redistribution conditions for the processed public datasets are reviewed separately before publication.
+Processed datasets are derived analytical outputs created from the cited official sources.
+
+Source attribution and applicable licensing conditions remain important when reusing or redistributing source-derived data. Because licensing metadata can differ across individual source datasets and years, users should consult the original source pages and terms for the specific resources they intend to reuse.
+
+A final source-attribution and licensing documentation review remains an open publication-maintenance task.
 
 ---
 
@@ -1054,10 +1062,12 @@ Dashboard screenshots       ✅ COMPLETE
 Public source-code curation ✅ COMPLETE
 Privacy review              ✅ COMPLETE
 README / documentation      ✅ COMPLETE
+GitHub publication          ✅ COMPLETE
 
 Final licensing review      🔄 IN PROGRESS
-GitHub publication          ⏳ NEXT
 ```
+
+The rebuilt project has been published to the existing GitHub repository URL while preserving the legacy project version separately.
 
 ---
 
