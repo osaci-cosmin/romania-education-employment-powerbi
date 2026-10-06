@@ -2,6 +2,14 @@
 
 ## Reproducible Python Data Pipelines and Power BI Analysis | 2014–2023
 
+<p align="left">
+  <a href="https://github.com/osaci-cosmin/romania-education-employment-powerbi/raw/refs/heads/main/powerbi/romania_education_employment.pbix">
+    <img src="https://img.shields.io/badge/Download-Power%20BI%20Dashboard-F2C811?style=for-the-badge&logo=powerbi&logoColor=black" alt="Download Power BI Dashboard">
+  </a>
+</p>
+
+> The complete `.pbix` file is available for download and can be opened locally with Microsoft Power BI Desktop.
+
 This project analyzes **employment, school enrollment, and Baccalaureate outcomes across Romanian counties** using reproducible Python data-processing pipelines and an interactive Power BI report.
 
 The project combines:
@@ -970,7 +978,31 @@ Power Query
 DAX
 Git
 GitHub
+AI-assisted development (ChatGPT)
 ```
+# AI-Assisted Development
+
+AI tools, including **ChatGPT**, were used as a development assistant throughout parts of this project.
+
+AI assistance was used primarily for:
+
+```text
+brainstorming and project structuring
+debugging support
+code review and explanation
+Power BI and DAX troubleshooting
+methodological discussion
+documentation drafting and refinement
+repository organization
+```
+
+AI-generated suggestions were treated as development support rather than as authoritative results.
+
+The underlying work — including data-source selection, execution of the Python pipelines, inspection of source files, transformation decisions, data-quality validation, Power BI modelling, dashboard construction, and final analytical interpretation — was reviewed and implemented by the author.
+
+Where factual or methodological claims depended on external information, official data sources and documentation were prioritized for verification.
+
+The final datasets, analytical results, visualizations, and repository contents were manually reviewed before publication.
 
 ---
 
@@ -1006,25 +1038,120 @@ GitHub publication
 
 # Data Sources and Licensing
 
-The project uses official public statistical and open-data sources.
+This project uses official public statistical and open-data sources.
 
-Main source platforms include:
+## Employment
+
+Employment data are derived from:
 
 ```text
 Eurostat
-data.gov.ro
-official Romanian education datasets
+Dataset: nama_10r_3empers
 ```
 
-The repository intentionally excludes raw source files and candidate-level intermediate Baccalaureate data.
+Eurostat permits reuse of its statistical data for commercial and non-commercial purposes provided that the source is acknowledged.
 
-Processed datasets are derived analytical outputs created from the cited official sources.
+The dataset used in this project was filtered, transformed, geographically standardized, and aggregated for analytical use.
 
-Source attribution and applicable licensing conditions remain important when reusing or redistributing source-derived data. Because licensing metadata can differ across individual source datasets and years, users should consult the original source pages and terms for the specific resources they intend to reuse.
+```text
+Source: Eurostat
+Dataset: nama_10r_3empers
+Transformations: performed by the project author
+```
 
-A final source-attribution and licensing documentation review remains an open publication-maintenance task.
+Eurostat is not responsible for the transformations, derived datasets, analytical calculations, or interpretations produced in this repository.
 
----
+## Enrollment
+
+Enrollment data originate from official datasets published by the Romanian Ministry of Education through:
+
+```text
+data.gov.ro
+```
+
+The Enrollment resources used by this project are published under:
+
+```text
+Creative Commons Attribution 4.0 International
+CC BY 4.0
+```
+
+The project transforms and aggregates the original resources into:
+
+```text
+data/processed/enrollment_clean.csv
+```
+
+The original resource references are preserved in:
+
+```text
+src/12_ingest_all_enrollment.py
+```
+
+## Baccalaureate
+
+Baccalaureate data originate from official annual datasets published through:
+
+```text
+data.gov.ro
+Romanian Ministry of Education
+```
+
+Licensing metadata varies across the annual source resources.
+
+Licenses represented among the source datasets include:
+
+```text
+OGL-ROU-1.0
+Creative Commons Attribution 4.0 International
+```
+
+The project therefore does not assign a single replacement license to the original Baccalaureate source data.
+
+The public dataset:
+
+```text
+data/processed/baccalaureate_clean.csv
+```
+
+is a derived County × Year analytical dataset created through normalization and aggregation of the official annual sources.
+
+Reuse of source-derived information remains subject to the applicable license and attribution conditions of the original resources.
+
+Original annual resource references are preserved in:
+
+```text
+src/26_ingest_all_baccalaureate.py
+```
+
+## Public Data Layer
+
+The repository intentionally excludes:
+
+```text
+data/raw/
+data/interim/
+```
+
+including the candidate-level Baccalaureate intermediate dataset.
+
+Only the final processed analytical datasets are published:
+
+```text
+data/processed/employment_clean.csv
+data/processed/enrollment_clean.csv
+data/processed/baccalaureate_clean.csv
+```
+
+These files contain transformed or aggregated analytical outputs derived from the official sources described above.
+
+## Project Code
+
+Original source code authored for this project is released under the MIT License.
+
+The MIT License applies to the project code and does not replace or override the licenses, attribution requirements, or other rights associated with third-party or source-derived datasets.
+
+Users wishing to reuse the processed datasets should preserve attribution to the relevant original data providers and consult the licensing metadata of the corresponding source resources.
 
 # Future Improvements
 
@@ -1064,7 +1191,7 @@ Privacy review              ✅ COMPLETE
 README / documentation      ✅ COMPLETE
 GitHub publication          ✅ COMPLETE
 
-Final licensing review      🔄 IN PROGRESS
+Final licensing review      ✅ COMPLETE
 ```
 
 The rebuilt project has been published to the existing GitHub repository URL while preserving the legacy project version separately.
