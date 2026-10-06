@@ -7393,7 +7393,7 @@ GITHUB CLEANUP                            ✅ COMPLETE
 
 GITHUB PUBLICATION                        ✅ COMPLETE
 
-FINAL SOURCE / LICENSING REVIEW           🔄 IN PROGRESS
+FINAL SOURCE / LICENSING REVIEW           ✅ COMPLETE
 ```
 
 ---
@@ -7571,7 +7571,9 @@ The reviewed public Python scripts contain no embedded passwords, API keys, acce
 
 The public repository was then committed and pushed to the existing `main` branch while the legacy project version remained preserved separately.
 
-Source attribution and dataset licensing remain subject to a final documentation review because individual source resources may use different licensing metadata.
+Source attribution and dataset licensing documentation were reviewed and finalized before completion of the public repository.
+
+The repository documents the applicable source and reuse conditions for the official data providers used by the project. Original project source code is released under the MIT License, while the MIT License does not replace or override the licensing and attribution requirements associated with third-party or source-derived datasets.
 
 ---
 
@@ -7746,9 +7748,217 @@ Scripturile Python selectate pentru publicare nu conțin parole, chei API, acces
 
 Repository-ul public a fost apoi publicat pe branch-ul existent `main`, iar versiunea veche a proiectului a rămas păstrată separat.
 
-Atribuirea surselor și licențierea dataseturilor rămân supuse unei verificări finale de documentație deoarece resursele sursă individuale pot utiliza metadata de licențiere diferite.
+Documentarea atribuirii surselor și a condițiilor de licențiere a dataseturilor a fost verificată și finalizată înainte de închiderea repository-ului public.
+
+Repository-ul documentează sursele oficiale și condițiile relevante de reutilizare pentru datele folosite în proiect. Codul sursă original al proiectului este publicat sub licența MIT, iar licența MIT nu înlocuiește și nu suprascrie condițiile de licențiere și atribuire asociate dataseturilor provenite din surse terțe.
 
 ---
+
+
+# Final Source Attribution and Licensing Review
+
+## English
+
+The final public repository was reviewed for source attribution, redistribution boundaries, and project-code licensing.
+
+### Employment
+
+Employment data are derived from the official Eurostat dataset:
+
+```text
+nama_10r_3empers
+```
+
+The public analytical output is a transformed County × Year dataset created from Eurostat data.
+
+Source attribution to Eurostat is preserved in the project documentation. Transformations, derived datasets, analytical calculations, and interpretations produced by this project are the responsibility of the project author.
+
+### Enrollment
+
+Enrollment data originate from official education datasets published through:
+
+```text
+data.gov.ro
+```
+
+The project preserves the original resource references in the ingestion workflow and publishes only the transformed analytical dataset:
+
+```text
+data/processed/enrollment_clean.csv
+```
+
+The repository documentation records the applicable source attribution and reuse conditions reviewed for these resources.
+
+### Baccalaureate
+
+Baccalaureate data originate from official annual datasets published through:
+
+```text
+data.gov.ro
+Romanian Ministry of Education
+```
+
+Licensing metadata is not identical across all annual source resources. Licenses represented among the reviewed annual resources include:
+
+```text
+OGL-ROU-1.0
+Creative Commons Attribution 4.0 International
+```
+
+For this reason, the project does not assign a single replacement data license to the original Baccalaureate source resources.
+
+The public output:
+
+```text
+data/processed/baccalaureate_clean.csv
+```
+
+is a derived County × Year analytical dataset created after normalization and aggregation of the official annual files.
+
+### Public data boundary
+
+The public repository intentionally excludes:
+
+```text
+data/raw/
+data/interim/
+```
+
+including the candidate-level Baccalaureate intermediate dataset.
+
+Only the final processed analytical datasets are published:
+
+```text
+data/processed/employment_clean.csv
+data/processed/enrollment_clean.csv
+data/processed/baccalaureate_clean.csv
+```
+
+These files are transformed or aggregated outputs derived from the official source datasets.
+
+### Project code license
+
+A standard:
+
+```text
+MIT License
+```
+
+is included in the repository for original project source code.
+
+The MIT License applies to original project code and does not replace, override, or relicense third-party datasets or source-derived information that remains subject to the applicable attribution and licensing conditions of the original providers.
+
+Final status:
+
+```text
+Source attribution review          ✅ COMPLETE
+Licensing documentation            ✅ COMPLETE
+MIT LICENSE                        ✅ COMPLETE
+```
+
+---
+
+## Română
+
+Repository-ul public final a fost verificat din perspectiva atribuirii surselor, a limitelor privind redistribuirea datelor și a licențierii codului original al proiectului.
+
+### Employment
+
+Datele Employment provin din datasetul oficial Eurostat:
+
+```text
+nama_10r_3empers
+```
+
+Output-ul analitic public este un dataset transformat Județ × An, construit pe baza datelor Eurostat.
+
+Atribuirea către Eurostat este păstrată în documentația proiectului. Transformările, dataseturile derivate, calculele analitice și interpretările produse în cadrul proiectului aparțin autorului proiectului.
+
+### Enrollment
+
+Datele Enrollment provin din dataseturi educaționale oficiale publicate prin:
+
+```text
+data.gov.ro
+```
+
+Proiectul păstrează referințele resurselor originale în workflow-ul de ingestie și publică numai datasetul analitic transformat:
+
+```text
+data/processed/enrollment_clean.csv
+```
+
+Documentația repository-ului consemnează condițiile relevante de atribuire și reutilizare verificate pentru aceste resurse.
+
+### Baccalaureate
+
+Datele de Bacalaureat provin din dataseturi oficiale anuale publicate prin:
+
+```text
+data.gov.ro
+Ministerul Educației din România
+```
+
+Metadata de licențiere nu este identică pentru toate resursele anuale. Printre licențele identificate în resursele anuale verificate se află:
+
+```text
+OGL-ROU-1.0
+Creative Commons Attribution 4.0 International
+```
+
+Din acest motiv, proiectul nu atribuie o singură licență de înlocuire datelor sursă originale de Bacalaureat.
+
+Output-ul public:
+
+```text
+data/processed/baccalaureate_clean.csv
+```
+
+este un dataset analitic derivat Județ × An, creat prin normalizarea și agregarea fișierelor oficiale anuale.
+
+### Limita stratului public de date
+
+Repository-ul public exclude intenționat:
+
+```text
+data/raw/
+data/interim/
+```
+
+inclusiv datasetul intermediar de Bacalaureat la nivel de candidat.
+
+Sunt publicate numai dataseturile analitice finale procesate:
+
+```text
+data/processed/employment_clean.csv
+data/processed/enrollment_clean.csv
+data/processed/baccalaureate_clean.csv
+```
+
+Aceste fișiere reprezintă output-uri transformate sau agregate derivate din dataseturile oficiale sursă.
+
+### Licența codului proiectului
+
+Repository-ul include o licență standard:
+
+```text
+MIT License
+```
+
+pentru codul sursă original al proiectului.
+
+Licența MIT se aplică codului original al proiectului și nu înlocuiește, nu suprascrie și nu relicențiază dataseturile terțe sau informațiile derivate din surse care rămân supuse condițiilor aplicabile de atribuire și licențiere ale furnizorilor originali.
+
+Status final:
+
+```text
+Verificarea atribuirii surselor     ✅ COMPLETE
+Documentarea licențierii            ✅ COMPLETE
+MIT LICENSE                         ✅ COMPLETE
+```
+
+---
+
 
 # Current Final Analytical Baseline
 
@@ -7906,6 +8116,7 @@ romania-education-employment-powerbi/
 │   └── 48_validate_processed_datasets.py
 │
 ├── .gitignore
+├── LICENSE
 └── README.md
 ```
 
@@ -8012,13 +8223,18 @@ GitHub publication
 
 The rebuilt version was published to the existing repository URL and `main` branch while the previous project version remained preserved separately.
 
-The only remaining documentation-maintenance task is:
+The final source-attribution and licensing review has been completed.
+
+The public repository now includes source and licensing documentation in `README.md` together with a standard MIT `LICENSE` covering original project source code. Third-party and source-derived datasets remain subject to the applicable attribution and licensing conditions of their original providers.
+
+Release history is also finalized:
 
 ```text
-final source-attribution and licensing review
+v1.0     → legacy release preserved for historical reference
+v2.0.0   → current Latest release
 ```
 
-This final review does not change the analytical results or Power BI model; it concerns the precision of reuse / attribution documentation for the individual official source resources.
+The final `v2.0.0` release includes the current `romania_education_employment.pbix` file as a downloadable release asset.
 
 ---
 
@@ -8119,13 +8335,18 @@ publicarea pe GitHub
 
 Versiunea reconstruită a fost publicată la URL-ul existent al repository-ului și pe branch-ul `main`, iar versiunea anterioară a proiectului a rămas păstrată separat.
 
-Singura activitate rămasă la nivel de întreținere a documentației este:
+Verificarea finală privind atribuirea surselor și licențierea a fost finalizată.
+
+Repository-ul public include acum documentarea surselor și a condițiilor de licențiere în `README.md`, precum și un fișier standard MIT `LICENSE` pentru codul sursă original al proiectului. Dataseturile provenite din surse terțe rămân supuse condițiilor aplicabile de atribuire și licențiere ale furnizorilor originali.
+
+Istoricul release-urilor este de asemenea finalizat:
 
 ```text
-verificarea finală a atribuirii surselor și a licențelor
+v1.0     → release legacy păstrat pentru referință istorică
+v2.0.0   → release-ul curent marcat Latest
 ```
 
-Această verificare finală nu modifică rezultatele analitice sau modelul Power BI; ea privește precizia documentării condițiilor de reutilizare și atribuire pentru resursele oficiale individuale.
+Release-ul final `v2.0.0` include fișierul curent `romania_education_employment.pbix` ca asset descărcabil.
 
 ---
 
@@ -8159,9 +8380,16 @@ Development log                    ✅ COMPLETE
 Git commit                         ✅ COMPLETE
 GitHub push to main                ✅ COMPLETE
 Legacy version preservation        ✅ COMPLETE
+MIT LICENSE                        ✅ COMPLETE
 
-DOCUMENTATION MAINTENANCE
-Final licensing review             🔄 IN PROGRESS
+SOURCE / LICENSING
+Source attribution review          ✅ COMPLETE
+Licensing documentation            ✅ COMPLETE
+
+RELEASES
+Legacy v1.0                        ✅ PRESERVED
+v2.0.0                             ✅ LATEST
+Final PBIX release asset           ✅ ATTACHED
 ```
 
-The analytical and portfolio build is complete and publicly available. Future work is optional enhancement or documentation maintenance rather than completion of the core project.
+The analytical, documentation, licensing, publication, and release workflow is complete. Future work consists only of optional extensions or maintenance.
